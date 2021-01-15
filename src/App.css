@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.tableCell {
+  border: 3px solid #282c34;
+  height: 100px;
+  width: 100px;;
+}
+
+.tableRow {
+  display: inline-block;
+}
+
+.table {
+  flex-direction: column;
+}

@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import React, { Component } from 'react'
+import { Table } from './Components';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      numRows: 4,
+      numCols: 4,
+    }
+    this.addRow = this.addRow.bind(this)
+    this.addCol = this.addCol.bind(this)
+  }
+
+  addRow() {
+    this.setState({numRows: this.state.numRows+1});
+  }
+
+  addCol() {
+    this.setState({numCols: this.state.numCols+1});
+  }
+
+  render() {
+    return (
+      <div>
+        <div>
+          <button onClick={this.addCol}>Add Row</button>
+          <button onClick={this.addRow}>Add Column</button>
+          <select id='colors' onChange={this.changeColor}>
+            <option value='white'>White</option>
+            <option value='red'>Red</option>
+            <option value='blue'>Blue</option>
+          </select>
+        </div>
+        <Table 
+          numRows={this.state.numRows}
+          numCols={this.state.numCols}
+        />
+      </div>
+    )
+  }
+
 }
 
 export default App;
